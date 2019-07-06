@@ -1,11 +1,11 @@
 package com.dumpkin.course;
 
-public class Commodity {
+public class Commodity implements Comparable<Commodity> {
 
-   private String brand;
-   private String TypeOfProduct;
-   private String name;
-   private String expireDate;
+    private String brand;
+    private String TypeOfProduct;
+    private String name;
+    private String expireDate;
 
 
     public Commodity(String brand, String typeOfProduct, String name, String expireDate) {
@@ -49,7 +49,12 @@ public class Commodity {
 
     @Override
     public String toString() {
-        return   name +" Продукт компанії " + brand +
-                ". Термін придатності: " + expireDate+". тип продукту "+TypeOfProduct ;
+        return name + " Продукт компанії " + brand +
+                ". Термін придатності: " + expireDate + ". тип продукту " + TypeOfProduct;
+    }
+
+    @Override
+    public int compareTo(Commodity commodity) {
+        return TypeOfProduct.compareTo(commodity.TypeOfProduct);
     }
 }

@@ -14,21 +14,36 @@ public class Starter {
 
         Scanner key = new Scanner(System.in);
 
-        System.out.println("(1)показати перелік товарів (2)додати товар (3)видалити товар");
+        System.out.println("(1)показати перелік товарів (2)додати товар (3)видалити товар \n" +
+                "(4)сортування за продуктом(5)сортування за типом (6)сортування за брендом");
         while (key.hasNext()) {
-            switch (key.nextByte()) {
+            switch (key.nextLine()) {
 
-                case 1:
+                case "1":
                     System.out.println("\n\nсписок ");
                     viewList(article);
                     break;
-                case 2:
+                case "2":
                     addElementTo(article);
                     break;
-                case 3:
+                case "3":
                     removeElementFrom(article);
                     break;
+                case "4":
+                    article.sort(new CommodityNameComparator());
+                    System.out.println("відсортовано");
+                    break;
+                case "5":
+                    article.sort(new CommodityTypeComparator());
+                    System.out.println("відсортовано");
+                    break;
+                case "6":
+                    article.sort(new CommodityBrandComparator());
+                    System.out.println("відсортовано");
+                    break;
                 default:
+                    System.out.println("неправильний параметр. спробуйте ще раз.");
+                case "exit":
                     return;
             }
 
@@ -36,6 +51,7 @@ public class Starter {
 
 
     }
+
 
     public static void viewList(ArrayList<Commodity> inerlist) {
         int num = 1;
